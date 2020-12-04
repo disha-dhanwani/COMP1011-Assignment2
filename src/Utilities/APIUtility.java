@@ -22,17 +22,18 @@ public class APIUtility {
      * @param jsonFile
      * @return
      */
-    public static UniversityJsonResponse getUniversitiesFromJson(File jsonFile){
+    public static UniversityInfo[] getUniversitiesFromJson(File jsonFile){
 
         Gson gson = new Gson();
-        UniversityJsonResponse result = null;
+        UniversityInfo[] result = null;
 
         try(
                 FileReader fileReader = new FileReader(jsonFile);
                 JsonReader jsonReader = new JsonReader(fileReader);
         )
         {
-            result = gson.fromJson(jsonReader, UniversityJsonResponse.class);
+            result = gson.fromJson(jsonReader, UniversityInfo[].class);
+            System.out.println();
         }
         catch(Exception e)
         {
@@ -42,17 +43,16 @@ public class APIUtility {
         return result;
     }
 
-    /***
+    /**
      * Method that receives a String called "searchText", calls the university API to receive
      * a json file. This file will be written to universitiesInfo.json
      */
-
     public static void callUniversityAPI(String search) throws IOException, InterruptedException {
 
         //Path to universitiesInfo JSON file
         String jsonFile = "src/Utilities/universitiesInfo.json";
         //Link used to call the API and search a university name
-        String uri = "http://universities.hipolabs.com/search?name=" + search;
+        String uri = "http://universities.hipolabs.com/search?country=" + search;
 
         //Using HttpClient and HttpRequest to send the request
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -64,7 +64,8 @@ public class APIUtility {
         HttpResponse<Path> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers
                 .ofFile(Paths.get(jsonFile)));
 
-        UniversityJsonResponse uniResponse = getUniversitiesFromJson(new File(jsonFile));
+//        UniversityJsonResponse[] uniResponse = getUniversitiesFromJson(new File(jsonFile));
+        System.out.println();
     }
 
 

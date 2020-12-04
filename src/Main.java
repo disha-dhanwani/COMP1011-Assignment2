@@ -6,10 +6,10 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
-//        APIUtility.getUniversitiesFromJson(new File("src/Utilities/universitiesInfo.json"));
+        APIUtility.getUniversitiesFromJson(new File("src/Utilities/universitiesInfo.json"));
 
         try {
-            APIUtility.callUniversityAPI("Lambton");
+            APIUtility.callUniversityAPI("Canada");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
