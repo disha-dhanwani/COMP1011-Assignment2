@@ -1,15 +1,19 @@
 import Utilities.APIUtility;
 
 import java.io.File;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
 
-        APIUtility.getUniversitiesFromJson(new File("src/Utilities/universitiesInfo.json"));
+//        APIUtility.getUniversitiesFromJson(new File("src/Utilities/universitiesInfo.json"));
 
+        try {
+            APIUtility.callUniversityAPI("Lambton");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
