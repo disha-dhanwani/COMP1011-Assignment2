@@ -92,4 +92,8 @@ public class UniversityInfo {
         this.domains = domains;
     }
 
+    public String toString(){
+        return String.format("%s - %s", name, country);
+    }
+
 }

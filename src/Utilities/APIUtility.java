@@ -64,8 +64,8 @@ public class APIUtility {
         HttpResponse<Path> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers
                 .ofFile(Paths.get(jsonFile)));
 
-//        UniversityJsonResponse[] uniResponse = getUniversitiesFromJson(new File(jsonFile));
-        System.out.println();
+        UniversityInfo[] uniResponse = getUniversitiesFromJson(new File(jsonFile));
+        System.out.println(uniResponse);
     }
 
 
