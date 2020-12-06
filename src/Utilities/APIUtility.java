@@ -1,7 +1,6 @@
 package Utilities;
 
 import Models.UniversityInfo;
-import Models.UniversityJsonResponse;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
