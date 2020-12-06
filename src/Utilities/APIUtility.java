@@ -47,7 +47,28 @@ public class APIUtility {
      * Method that receives a String called "searchText", calls the university API to receive
      * a json file. This file will be written to universitiesInfo.json
      */
-    public static void callUniversityAPI(String search) throws IOException, InterruptedException {
+    public static UniversityInfo[] callUniversityByNameAPI(String search) throws IOException, InterruptedException {
+
+        //Path to universitiesInfo JSON file
+        String jsonFile = "src/Utilities/universitiesInfo.json";
+        //Link used to call the API and search a university name
+        String uri = "http://universities.hipolabs.com/search?name=" + search;
+
+        //Using HttpClient and HttpRequest to send the request
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(URI.create(uri))
+                .build();
+
+        //return the results and write it to jsonFile
+        HttpResponse<Path> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers
+                .ofFile(Paths.get(jsonFile)));
+
+        UniversityInfo[] uniResponse = getUniversitiesFromJson(new File(jsonFile));
+        return uniResponse;
+    }
+
+    public static UniversityInfo[] callUniversityByCountryAPI(String search) throws IOException, InterruptedException {
 
         //Path to universitiesInfo JSON file
         String jsonFile = "src/Utilities/universitiesInfo.json";
@@ -65,9 +86,8 @@ public class APIUtility {
                 .ofFile(Paths.get(jsonFile)));
 
         UniversityInfo[] uniResponse = getUniversitiesFromJson(new File(jsonFile));
-        System.out.println(uniResponse);
+        return uniResponse;
     }
-
 
 
 }

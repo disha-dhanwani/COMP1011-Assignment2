@@ -4,21 +4,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UniversityViewController">
    <children>
-      <VBox alignment="CENTER" layoutX="100.0" layoutY="46.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="20.0" layoutY="21.0" prefHeight="450.0" prefWidth="760.0" spacing="30.0">
          <children>
             <Label text="University Details" />
             <HBox alignment="CENTER" spacing="30.0">
                <children>
+                  <RadioButton fx:id="nameRadioButton" mnemonicParsing="false" text="Search by Name" />
+                  <RadioButton fx:id="countryRadioButton" mnemonicParsing="false" text="Search by Country" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="30.0">
+               <children>
                   <TextField fx:id="textField" prefHeight="27.0" prefWidth="273.0" promptText="Enter University Name" />
-                  <Button mnemonicParsing="false" text="Search Universities" />
+                  <Button mnemonicParsing="false" onAction="#getUniversities" text="Search Universities" />
                </children>
             </HBox>
             <ListView fx:id="listView" prefHeight="200.0" prefWidth="570.0" />
