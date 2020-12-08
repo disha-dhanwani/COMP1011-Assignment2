@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UniversityViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UniversityViewController">
    <children>
-      <VBox alignment="CENTER" layoutX="20.0" layoutY="21.0" prefHeight="450.0" prefWidth="760.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="2.0" layoutY="18.0" prefHeight="450.0" prefWidth="760.0" spacing="30.0">
          <children>
             <Label text="University Details" />
             <HBox alignment="CENTER" spacing="30.0">
@@ -27,7 +27,7 @@
                   <Button mnemonicParsing="false" onAction="#getUniversities" text="Search Universities" />
                </children>
             </HBox>
-            <ListView fx:id="listView" prefHeight="200.0" prefWidth="570.0" />
+            <ListView fx:id="listView" onMouseClicked="#viewUniversityDetails" prefHeight="200.0" prefWidth="570.0" />
             <Label fx:id="errorLabel" text="Label" />
          </children>
          <padding>

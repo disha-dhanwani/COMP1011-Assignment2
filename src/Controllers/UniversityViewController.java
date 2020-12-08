@@ -2,15 +2,19 @@ package Controllers;
 
 import Models.UniversityInfo;
 import Utilities.APIUtility;
+import Views.SceneChanger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UniversityViewController implements Initializable {
@@ -30,7 +34,7 @@ public class UniversityViewController implements Initializable {
     @FXML
     private Label errorLabel;
 
-    private String searchText;
+    public static String searchText;
 
     /**
      * When the application is launched, the user will be presented with a scene that
@@ -50,6 +54,26 @@ public class UniversityViewController implements Initializable {
 
     }
 
+//    public void onSelection(Label name, Label country, Label stateProvince, Label countryCode, Label webpage, Label domain) {
+//        listView.getSelectionModel().selectedItemProperty().addListener(
+//                (obs, oldValue, universitySelected) -> {
+//
+//                    name.setText(new String(universitySelected.getName()));
+//                    country.setText(new String(universitySelected.getName()));
+//                    stateProvince.setText(new String(universitySelected.getStateProvince()));
+//                    countryCode.setText(new String(universitySelected.getAlphaTwoCode()));
+//                    webpage.setText(new String(Arrays.toString(universitySelected.getWebPages())));
+//                    domain.setText(new String(Arrays.toString(universitySelected.getDomains())));
+//                }
+//        );
+//    }
+
+    @FXML
+    private void viewUniversityDetails(ActionEvent event) throws IOException {
+        SceneChanger.changeScene(event, "UniversityInfoView.fxml","University Details");
+
+    }
+
     /**
      *
      */
@@ -59,7 +83,7 @@ public class UniversityViewController implements Initializable {
         searchText = textField.getText();
         searchText = searchText.replace(" ", "%20");
 
-        if(!nameRadioButton.isSelected() && !countryRadioButton.isSelected() && textField.getText().isBlank())
+        if(!nameRadioButton.isSelected() && !countryRadioButton.isSelected() && searchText.isBlank())
         {
             errorLabel.setText("Please choose an option to search for a list of universities!");
         }
@@ -70,7 +94,7 @@ public class UniversityViewController implements Initializable {
 
         else if(nameRadioButton.isSelected())
         {
-            if (textField.getText().isBlank()) {
+            if (searchText.isBlank()) {
                 errorLabel.setText("Please enter the name of the university you are looking for in the search box!");
             } else {
                 getUniversitiesByName();
@@ -78,7 +102,7 @@ public class UniversityViewController implements Initializable {
         }
         else
         {
-            if(textField.getText().isBlank()) {
+            if(searchText.isBlank()) {
                 errorLabel.setText("Please enter the name of a country in the search box!");
             }
             else {
