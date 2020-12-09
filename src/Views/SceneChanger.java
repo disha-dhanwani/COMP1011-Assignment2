@@ -1,5 +1,7 @@
 package Views;
 
+import Controllers.UniversityInfoViewController;
+import Controllers.UniversityViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,12 +17,14 @@ public class SceneChanger {
         loader.setLocation(new Object(){}.getClass().getResource(viewName));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        //add stylesheet
-        //scene.getStylesheets().add("styles.css");
-        //set icon
+
+//        UniversityViewController controller = new UniversityViewController();
+//        UniversityInfoViewController infoController = loader.getController();
+//        infoController.getInfo(controller.listView.getSelectionModel().getSelectedItem());
+
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("University Details");
+        stage.setTitle(title);
         stage.show();
     }
 }

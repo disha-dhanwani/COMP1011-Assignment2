@@ -8,9 +8,13 @@ import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,23 +58,29 @@ public class UniversityViewController implements Initializable {
 
     }
 
-//    public void onSelection(Label name, Label country, Label stateProvince, Label countryCode, Label webpage, Label domain) {
-//        listView.getSelectionModel().selectedItemProperty().addListener(
-//                (obs, oldValue, universitySelected) -> {
-//
-//                    name.setText(new String(universitySelected.getName()));
-//                    country.setText(new String(universitySelected.getName()));
-//                    stateProvince.setText(new String(universitySelected.getStateProvince()));
-//                    countryCode.setText(new String(universitySelected.getAlphaTwoCode()));
-//                    webpage.setText(new String(Arrays.toString(universitySelected.getWebPages())));
-//                    domain.setText(new String(Arrays.toString(universitySelected.getDomains())));
-//                }
-//        );
-//    }
-
+    /**
+     * This method changes the scene once the user selects a university from the listview and
+     * click the button, to the UniversityInfoView.fxml scene which displays info about the selected
+     * university.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void viewUniversityDetails(ActionEvent event) throws IOException {
-        SceneChanger.changeScene(event, "UniversityInfoView.fxml","University Details");
+//        SceneChanger.changeScene(event, "UniversityInfoView.fxml","University Details");
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("src/Views/UniversityInfoView.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        UniversityInfoViewController controller = loader.getController();
+        controller.getInfo(listView.getSelectionModel().getSelectedItem());
+
+        stage.setScene(scene);
+        stage.setTitle("Details");
+        stage.show();
 
     }
 

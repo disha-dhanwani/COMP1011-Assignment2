@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UniversityInfoViewController implements Initializable {
@@ -33,14 +34,23 @@ public class UniversityInfoViewController implements Initializable {
     @FXML
     private Label domainLabel;
 
-    UniversityViewController uni = new UniversityViewController();
+    private UniversityInfo uniDetails;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //uni.onSelection(nameLabel, countryLabel, stateProvinceLabel, alphaTwoCodeLabel, webpageLabel, domainLabel);
-
     }
 
+    public void getInfo(UniversityInfo uni){
+        uniDetails = uni;
+        nameLabel.setText(uniDetails.getName());
+        countryLabel.setText(uniDetails.getCountry());
+        stateProvinceLabel.setText(uniDetails.getStateProvince());
+        alphaTwoCodeLabel.setText(uniDetails.getAlphaTwoCode());
+        webpageLabel.setText(Arrays.toString(uniDetails.getWebPages()));
+        domainLabel.setText(Arrays.toString(uniDetails.getDomains()));
+
+    }
 
 
 

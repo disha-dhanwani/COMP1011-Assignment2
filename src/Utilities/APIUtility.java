@@ -19,7 +19,7 @@ public class APIUtility {
     /***
      * Method to read the json file and return details of universities
      * @param jsonFile
-     * @return
+     * @return result
      */
     public static UniversityInfo[] getUniversitiesFromJson(File jsonFile){
 
