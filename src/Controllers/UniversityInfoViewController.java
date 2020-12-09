@@ -4,10 +4,16 @@ import Models.UniversityInfo;
 import Utilities.APIUtility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,6 +58,18 @@ public class UniversityInfoViewController implements Initializable {
 
     }
 
-
+    /**
+     * This method leads the user back to the listView where they can start a new search.
+     * @param event
+     * @throws IOException
+     */
+    public void goToListView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("UniversityView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("University Application");
+        stage.show();
+    }
 
 }
