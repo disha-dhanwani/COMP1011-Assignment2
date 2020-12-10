@@ -1,0 +1,64 @@
+/*
+ * COMP1011 - ASSIGNMENT2
+ * Student Name: Disha Dhanwani
+ * Student Number: 200434069
+ */
+.root {
+    -fx-background-color: linear-gradient(from 100px 120px to 200px 450px, #97b6f3, #5b75f5);
+    -fx-font-size: 16px;
+    -fx-font-family: Kefa;
+}
+
+.header {
+    -fx-font-size: 22px;
+    -fx-text-fill: black;
+    -fx-font-weight: bolder;
+    -fx-effect: dropshadow(gaussian, #a1a1f6, 20, 0.02, 3, 4);
+}
+
+.radio-button {
+    -fx-font-size: 16px;
+}
+
+.text-field {
+    -fx-background-radius: 14px;
+}
+
+.button {
+    -fx-background-radius: 14px;
+    -fx-border-color: #3454ea;
+    -fx-border-radius: 14px;
+    -fx-background-color: #c4ceff;
+}
+
+.button:hover{
+    -fx-background-color: #7f93f5;
+}
+
+.list-view {
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-border-color: #3454ea;
+}
+
+.list-cell {
+    -fx-font-size: 14px;
+}
+
+.errorLabel {
+    -fx-text-fill: #ffffff;
+    -fx-font-style: italic;
+    -fx-effect: dropshadow(gaussian, #1f1f1f, 30, 0.2, 3, 4);
+}
+
+.detailsLabel {
+    -fx-text-fill: #0a0707;
+    -fx-effect: dropshadow(gaussian, #8686e2, 20, 0.02, 3, 4);
+}
+
+.grid-pane {
+    -fx-border-color: #3454ea;
+    -fx-border-radius: 14px;
+    -fx-border-width: 1.5;
+}
+/*End of stylesheet*/

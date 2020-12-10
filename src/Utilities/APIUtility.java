@@ -1,3 +1,8 @@
+/**
+ * COMP1011 - ASSIGNMENT2
+ * Student Name: Disha Dhanwani
+ * Student Number: 200434069
+ */
 package Utilities;
 
 import Models.UniversityInfo;
@@ -17,7 +22,8 @@ import java.nio.file.Paths;
 public class APIUtility {
 
     /***
-     * Method to read the json file and return details of universities
+     * This is the method to read the JSON file and return
+     * UniversityInfo[] objects.
      * @param jsonFile
      * @return result
      */
@@ -32,7 +38,6 @@ public class APIUtility {
         )
         {
             result = gson.fromJson(jsonReader, UniversityInfo[].class);
-            System.out.println();
         }
         catch(Exception e)
         {
@@ -43,14 +48,16 @@ public class APIUtility {
     }
 
     /**
-     * Method that receives a String called "searchText", calls the university API to receive
-     * a json file. This file will be written to universitiesInfo.json
+     * This method receives a String called "search" and calls the
+     * university API to receive a json file. This file will be written to
+     * universitiesInfo.json
+     * This API call returns UniversityInfo[] objects based on university names.
      */
     public static UniversityInfo[] callUniversityByNameAPI(String search) throws IOException, InterruptedException {
 
         //Path to universitiesInfo JSON file
         String jsonFile = "src/Utilities/universitiesInfo.json";
-        //Link used to call the API and search a university name
+        //Link used to call the API and search a university by its name
         String uri = "http://universities.hipolabs.com/search?name=" + search;
 
         //Using HttpClient and HttpRequest to send the request
@@ -67,11 +74,17 @@ public class APIUtility {
         return uniResponse;
     }
 
+    /**
+     * This method receives a String called "search" and calls the
+     * university API to receive a json file. This file will be written to
+     * universitiesInfo.json.
+     * This API call returns UniversityInfo[] objects based on country names.
+     */
     public static UniversityInfo[] callUniversityByCountryAPI(String search) throws IOException, InterruptedException {
 
         //Path to universitiesInfo JSON file
         String jsonFile = "src/Utilities/universitiesInfo.json";
-        //Link used to call the API and search a university name
+        //Link used to call the API and search a university by country name
         String uri = "http://universities.hipolabs.com/search?country=" + search;
 
         //Using HttpClient and HttpRequest to send the request
@@ -88,5 +101,5 @@ public class APIUtility {
         return uniResponse;
     }
 
-
 }
+//End of Class.

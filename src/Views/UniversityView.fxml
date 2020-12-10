@@ -9,12 +9,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UniversityViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UniversityViewController">
    <children>
-      <VBox alignment="CENTER" layoutX="2.0" layoutY="18.0" prefHeight="450.0" prefWidth="760.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="2.0" layoutY="2.0" prefHeight="500.0" prefWidth="700.0" spacing="20.0">
          <children>
-            <Label text="University Details" />
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="header" text="University Information">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
             <HBox alignment="CENTER" spacing="30.0">
                <children>
                   <RadioButton fx:id="nameRadioButton" mnemonicParsing="false" text="Search by Name" />
@@ -23,13 +27,16 @@
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
                <children>
-                  <TextField fx:id="textField" prefHeight="27.0" prefWidth="273.0" />
-                  <Button mnemonicParsing="false" onAction="#getUniversities" text="Search Universities" />
+                  <TextField fx:id="textField" prefHeight="27.0" prefWidth="273.0" styleClass="text-field" />
+                  <Button mnemonicParsing="false" onAction="#getUniversities" text="Find Universities" />
                </children>
             </HBox>
-            <ListView fx:id="listView" prefHeight="200.0" prefWidth="570.0" />
-            <Label fx:id="errorLabel" text="Label" />
-            <Button mnemonicParsing="false" onAction="#viewUniversityDetails" text="Button" />
+            <ListView fx:id="listView" onMouseClicked="#userSelectedListItem" prefHeight="195.0" prefWidth="720.0" />
+            <Label fx:id="errorLabel" styleClass="errorLabel" text="Error">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></Label>
+            <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#viewUniversityDetails" text="Get Details" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
